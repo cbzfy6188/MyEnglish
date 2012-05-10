@@ -1,6 +1,6 @@
 *.swp
 *.~
 *.[oa]
-bin/Debug/*.exe
+bin/
 obj/
 Thumbs.db
