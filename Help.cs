@@ -17,6 +17,11 @@ namespace MyEnglish
         {
             InitializeComponent();
             mainform = main;
+            String mhelp = "Help:\n";
+            mhelp += "1.use 'Add New Uint' to add  words infomation.\n";
+            mhelp += "2.use 'Edit Uint' to edit words infomation.\n";
+            mhelp += "3.use 'Test' to test your learning outcomes.";
+            labelHelp.Text = mhelp;
         }
 
         private void buttonHome_Click(object sender, EventArgs e)

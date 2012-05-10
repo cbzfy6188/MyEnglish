@@ -34,40 +34,76 @@ namespace MyEnglish
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-           // String dataLine = "[Unit:" + dataStruct.getUnit() + "][EnglishWord:" + dataStruct.getEnglishWord + "][ChineseWord1:" +
-            //    dataStruct.getChineseWord1 + "][ChineseWord2:" + dataStruct.getChineseWord2 + "][ChineseWord3:" +
-           //     dataStruct.getChineseWord3 + "][ChineseWord4:" + dataStruct.getChineseWord4 + "]";
-           // mainform.dataFile.WriteLine(dataLine);
+            if (dataStruct.getUnit() == 0)
+            {
+                MessageBox.Show("You must fill in the unit number");
+                return;
+            }
+            if (dataStruct.getEnglishWord() == "")
+            {
+                MessageBox.Show("You must fill in the English word");
+                return;
+            }
+            if ((dataStruct.getChineseWord1() == "") && 
+                (dataStruct.getChineseWord2() == "") && 
+                (dataStruct.getChineseWord3() == "") && 
+                (dataStruct.getChineseWord4() == ""))
+            {
+                MessageBox.Show("You have to fill at least one Chinese word");
+                return;
+            }
+            
+            String dataLine = "[Unit:" + dataStruct.getUnit() + "]";
+            dataLine += "[EnglishWord:" + dataStruct.getEnglishWord() + "]";
+            dataLine += "[ChineseWord1:" + dataStruct.getChineseWord1() + "]";
+            dataLine += "[ChineseWord2:" + dataStruct.getChineseWord1() + "]";
+            dataLine += "[ChineseWord3:" + dataStruct.getChineseWord1() + "]";
+            dataLine += "[ChineseWord4:" + dataStruct.getChineseWord1() + "]";
+
+            dataFile.WriteLine(dataLine);
+            
+            labelWords.Text = dataLine;
+            labelUnit.Text += dataStruct.getUnit();
+
+            textUnit.Text = "";
+            textEnglishWord.Text = "";
+            textChineseWord1.Text = "";
+            textChineseWord2.Text = "";
+            textChineseWord3.Text = "";
+            textChineseWord4.Text = "";
         }
 
         private void textUnit_TextChanged(object sender, EventArgs e)
         {
-            //dataStruct.setUnit( ); 
+            if (textUnit.Text != "")
+            {
+                dataStruct.setUnit(Int32.Parse(textUnit.Text));
+            }
         }
 
         private void textEnglishWord_TextChanged(object sender, EventArgs e)
         {
-            //dataStruct.setEnglishWord( );
+            dataStruct.setEnglishWord(textEnglishWord.Text);
         }
 
         private void textChineseWord1_TextChanged(object sender, EventArgs e)
         {
-            //dataStruct.setChineseWord1( );
+            dataStruct.setChineseWord1(textChineseWord1.Text);
         }
 
         private void textChineseWord2_TextChanged(object sender, EventArgs e)
         {
-            //dataStruct.setChineseWord2( );
+            dataStruct.setChineseWord2(textChineseWord2.Text);
         }
 
         private void textChineseWord3_TextChanged(object sender, EventArgs e)
         {
-            //dataStruct.setChineseWord3( );
+            dataStruct.setChineseWord3(textChineseWord3.Text);
         }
 
         private void textChineseWord4_TextChanged(object sender, EventArgs e)
         {
-            //dataStruct.setChineseWord4( );
+            dataStruct.setChineseWord4(textChineseWord4.Text);
         }
 
         private void home_Click(object sender, EventArgs e)

@@ -35,6 +35,10 @@
             this.textEditWord = new System.Windows.Forms.TextBox();
             this.labelTestResult = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
+            this.buttonIWW = new System.Windows.Forms.Button();
+            this.buttonSTCA = new System.Windows.Forms.Button();
+            this.buttonOSEM = new System.Windows.Forms.Button();
+            this.labelCorrectAnswer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonHome
@@ -105,11 +109,52 @@
             this.labelInfo.TabIndex = 20;
             this.labelInfo.Text = "Information:";
             // 
+            // buttonIWW
+            // 
+            this.buttonIWW.Location = new System.Drawing.Point(13, 13);
+            this.buttonIWW.Name = "buttonIWW";
+            this.buttonIWW.Size = new System.Drawing.Size(112, 46);
+            this.buttonIWW.TabIndex = 21;
+            this.buttonIWW.Text = "Include wrong words";
+            this.buttonIWW.UseVisualStyleBackColor = true;
+            // 
+            // buttonSTCA
+            // 
+            this.buttonSTCA.Location = new System.Drawing.Point(13, 338);
+            this.buttonSTCA.Name = "buttonSTCA";
+            this.buttonSTCA.Size = new System.Drawing.Size(112, 46);
+            this.buttonSTCA.TabIndex = 22;
+            this.buttonSTCA.Text = "Show the correct answer";
+            this.buttonSTCA.UseVisualStyleBackColor = true;
+            // 
+            // buttonOSEM
+            // 
+            this.buttonOSEM.Location = new System.Drawing.Point(13, 89);
+            this.buttonOSEM.Name = "buttonOSEM";
+            this.buttonOSEM.Size = new System.Drawing.Size(112, 46);
+            this.buttonOSEM.TabIndex = 23;
+            this.buttonOSEM.Text = "Only show English mode";
+            this.buttonOSEM.UseVisualStyleBackColor = true;
+            // 
+            // labelCorrectAnswer
+            // 
+            this.labelCorrectAnswer.AutoSize = true;
+            this.labelCorrectAnswer.ForeColor = System.Drawing.Color.Red;
+            this.labelCorrectAnswer.Location = new System.Drawing.Point(646, 89);
+            this.labelCorrectAnswer.Name = "labelCorrectAnswer";
+            this.labelCorrectAnswer.Size = new System.Drawing.Size(89, 12);
+            this.labelCorrectAnswer.TabIndex = 24;
+            this.labelCorrectAnswer.Text = "Correct answer";
+            // 
             // Test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 423);
+            this.Controls.Add(this.labelCorrectAnswer);
+            this.Controls.Add(this.buttonOSEM);
+            this.Controls.Add(this.buttonSTCA);
+            this.Controls.Add(this.buttonIWW);
             this.Controls.Add(this.labelInfo);
             this.Controls.Add(this.labelTestResult);
             this.Controls.Add(this.textEditWord);
@@ -136,5 +181,9 @@
         private System.Windows.Forms.TextBox textEditWord;
         private System.Windows.Forms.Label labelTestResult;
         private System.Windows.Forms.Label labelInfo;
+        private System.Windows.Forms.Button buttonIWW;
+        private System.Windows.Forms.Button buttonSTCA;
+        private System.Windows.Forms.Button buttonOSEM;
+        private System.Windows.Forms.Label labelCorrectAnswer;
     }
 }

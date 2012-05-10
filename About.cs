@@ -17,6 +17,11 @@ namespace MyEnglish
         {
             InitializeComponent();
             mainform = main;
+            String mabout = "About us:\n";
+            mabout += "This is a private software. Not for commercial use.\n";
+            mabout += "This software developed by Jacob Cao. It is used for himself and his wife Josephine Zhu learning English.\n";
+            mabout += "If you have any question, please send email to me(cbzfy6188@gmail.com).";
+            labelHelp.Text = mabout;
         }
 
         private void buttonHome_Click(object sender, EventArgs e)
