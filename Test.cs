@@ -17,7 +17,12 @@ namespace MyEnglish
         private string datafile_name = "DataFile";
         private List<int> testRange = new List<int>();
         private List<DataStruct> dataStruct = new List<DataStruct>();
+        private List<int> randomIndex = new List<int>();
+        private int index_testing = 0;
         private int testRangeMode = 0;      //Auto:0,Single Unit:1,Multi Units:2
+        private int testMode = 0;      //Random:0,Show English:1,Show Chinese:2
+        private int testMode_tmp = 0; //Show English:0,Show Chinese:1
+        private bool retestWrongWords = true;
 
         public Test(Main main)
         {
@@ -35,7 +40,8 @@ namespace MyEnglish
             buttonStop.Enabled = false;
             buttonSCA.Enabled = false;
             radioButtonR.Checked = true;
-            checkBoxRTWW.Checked = true;
+            checkBoxRWW.Checked = true;
+            retestWrongWords = true;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -64,6 +70,12 @@ namespace MyEnglish
                         MessageBox.Show(dataStruct[i].getTestResult().ToString());
                 }
             }*/
+            Random random_index = new Random();
+            for(int i=0;i<dataStruct.Count;i++);
+            {
+                randomIndex.Add(random_index.Next(dataStruct.Count));
+            }
+            showTestingWord();
 
             buttonStart.Enabled = false;
             buttonPause.Enabled = true;
@@ -168,9 +180,65 @@ namespace MyEnglish
             }
         }
 
-        private void checkBoxRTWW_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonR_CheckedChanged(object sender, EventArgs e)
         {
+            if (radioButtonR.Checked == true)
+            {
+                labelPrompt.Text = "Set to range mode.";
+                testMode = 0;
+            }
+        }
 
+        private void radioButtonSE_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonSE.Checked == true)
+            {
+                labelPrompt.Text = "Set to show English mode.";
+                testMode = 1;
+            }
+        }
+
+        private void radioButtonSC_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonSC.Checked == true)
+            {
+                labelPrompt.Text = "Set to show Chinese mode.";
+                testMode = 2;
+            }
+        }
+
+        private void checkBoxRWW_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBoxRWW.Checked == true)
+            {
+                labelPrompt.Text = "Enable 'retest wrong words' mode.";
+                retestWrongWords = true;
+            }
+            else
+            {
+                labelPrompt.Text = "Disable 'retest wrong words' mode.";
+                retestWrongWords = false;
+            }
+        }
+
+        private void textEditWord_TextChanged(object sender, EventArgs e)
+        {
+            if ((textEditWord.Text == returnAnswer()[0]) || (textEditWord.Text == returnAnswer()[1])
+                || (textEditWord.Text == returnAnswer()[2]) || (textEditWord.Text == returnAnswer()[3]))
+            {
+                dataStruct[randomIndex[index_testing]].setTested(true);
+                dataStruct[randomIndex[index_testing]].setTestResult(true);
+                index_testing++;
+                if (index_testing == dataStruct.Count)
+                {
+                    return;
+                }
+                showTestingWord();
+            }
+            else
+            {
+                dataStruct[randomIndex[index_testing]].setTestResult(false);
+            }
         }
 
         private void buttonHome_Click(object sender, EventArgs e)
@@ -347,6 +415,119 @@ namespace MyEnglish
                 tmp_dataList.Add(tmp_data);
             }
             return tmp_dataList;
+        }
+
+        private void addWrongWords()
+        {
+            for (int i = 0; i < dataStruct.Count; i++)
+            {
+                if (dataStruct[i].getTestResult() == false)
+                {
+                    dataStruct[i].setTested(false);
+                }
+            }
+        }
+
+        private void removeWrongWords()
+        {
+            for (int i = 0; i < dataStruct.Count; i++)
+            {
+                if (dataStruct[i].getTestResult() == false)
+                {
+                    dataStruct[i].setTested(true);
+                }
+            }
+        }
+
+        private void showTestingWord()
+        {
+            Random random = new Random();
+            List<String> index_c = new List<String>();
+            switch (testMode)
+            {
+                case 0:
+                    Random random_mode = new Random();
+                    if (random_mode.Next(2) == 0)
+                    {
+                        labelPrompt.Text = "Please enter a Chinese word.";
+                        labelShowWordTitle.Text = "English Word:";
+                        labelEditWordTitle.Text = "Chinese Word:";
+                        labelShowWord.Text = dataStruct[randomIndex[index_testing]].getEnglishWord();
+                        testMode_tmp = 0;
+                    }
+                    else
+                    {
+                        labelPrompt.Text = "Please enter a English word.";
+                        labelShowWordTitle.Text = "Chinese Word:";
+                        labelEditWordTitle.Text = "English Word:";
+                        if (dataStruct[randomIndex[index_testing]].getChineseWord1() != "")
+                        {
+                            index_c.Add(dataStruct[randomIndex[index_testing]].getChineseWord1());
+                        }
+                        else if (dataStruct[randomIndex[index_testing]].getChineseWord2() != "")
+                        {
+                            index_c.Add(dataStruct[randomIndex[index_testing]].getChineseWord2());
+                        }
+                        else if (dataStruct[randomIndex[index_testing]].getChineseWord3() != "")
+                        {
+                            index_c.Add(dataStruct[randomIndex[index_testing]].getChineseWord3());
+                        }
+                        else if (dataStruct[randomIndex[index_testing]].getChineseWord4() != "")
+                        {
+                            index_c.Add(dataStruct[randomIndex[index_testing]].getChineseWord4());
+                        }
+                        labelShowWord.Text = index_c[random.Next(index_c.Count)];
+                        testMode_tmp = 1;
+                    }
+                    break;
+                case 1:
+                    labelPrompt.Text = "Please enter a Chinese word.";
+                    labelShowWordTitle.Text = "English Word:";
+                    labelEditWordTitle.Text = "Chinese Word:";
+                    labelShowWord.Text = dataStruct[randomIndex[index_testing]].getEnglishWord();
+                    testMode_tmp = 0;
+                    break;
+                case 2:
+                    labelPrompt.Text = "Please enter a English word.";
+                    labelShowWordTitle.Text = "Chinese Word:";
+                    labelEditWordTitle.Text = "English Word:";
+                    if (dataStruct[randomIndex[index_testing]].getChineseWord1() != "")
+                    {
+                        index_c.Add(dataStruct[randomIndex[index_testing]].getChineseWord1());
+                    }
+                    else if (dataStruct[randomIndex[index_testing]].getChineseWord2() != "")
+                    {
+                        index_c.Add(dataStruct[randomIndex[index_testing]].getChineseWord2());
+                    }
+                    else if (dataStruct[randomIndex[index_testing]].getChineseWord3() != "")
+                    {
+                        index_c.Add(dataStruct[randomIndex[index_testing]].getChineseWord3());
+                    }
+                    else if (dataStruct[randomIndex[index_testing]].getChineseWord4() != "")
+                    {
+                        index_c.Add(dataStruct[randomIndex[index_testing]].getChineseWord4());
+                    }
+                    labelShowWord.Text = index_c[random.Next(index_c.Count)];
+                    testMode_tmp = 1;
+                    break;
+            }
+        }
+
+        private String[] returnAnswer()
+        {
+            String[] answer = new String[4];
+            if (testMode_tmp == 0)
+            {
+                answer[0] = dataStruct[randomIndex[index_testing]].getChineseWord1();
+                answer[1] = dataStruct[randomIndex[index_testing]].getChineseWord2();
+                answer[2] = dataStruct[randomIndex[index_testing]].getChineseWord3();
+                answer[3] = dataStruct[randomIndex[index_testing]].getChineseWord4();
+            }
+            else
+            {
+                answer[0] = dataStruct[randomIndex[index_testing]].getEnglishWord();
+            }
+            return answer;
         }
     }
 }

@@ -44,7 +44,7 @@
             this.radioButtonSE = new System.Windows.Forms.RadioButton();
             this.radioButtonSC = new System.Windows.Forms.RadioButton();
             this.groupBoxTM = new System.Windows.Forms.GroupBox();
-            this.checkBoxRTWW = new System.Windows.Forms.CheckBox();
+            this.checkBoxRWW = new System.Windows.Forms.CheckBox();
             this.groupBoxTR = new System.Windows.Forms.GroupBox();
             this.radioButtonMU = new System.Windows.Forms.RadioButton();
             this.radioButtonSU = new System.Windows.Forms.RadioButton();
@@ -105,6 +105,7 @@
             this.textEditWord.Name = "textEditWord";
             this.textEditWord.Size = new System.Drawing.Size(160, 81);
             this.textEditWord.TabIndex = 18;
+            this.textEditWord.TextChanged += new System.EventHandler(this.textEditWord_TextChanged);
             // 
             // labelTestResult
             // 
@@ -186,6 +187,7 @@
             this.radioButtonR.TabStop = true;
             this.radioButtonR.Text = "Random";
             this.radioButtonR.UseVisualStyleBackColor = true;
+            this.radioButtonR.CheckedChanged += new System.EventHandler(this.radioButtonR_CheckedChanged);
             // 
             // radioButtonSE
             // 
@@ -197,6 +199,7 @@
             this.radioButtonSE.TabStop = true;
             this.radioButtonSE.Text = "Show English";
             this.radioButtonSE.UseVisualStyleBackColor = true;
+            this.radioButtonSE.CheckedChanged += new System.EventHandler(this.radioButtonSE_CheckedChanged);
             // 
             // radioButtonSC
             // 
@@ -208,6 +211,7 @@
             this.radioButtonSC.TabStop = true;
             this.radioButtonSC.Text = "Show Chinese";
             this.radioButtonSC.UseVisualStyleBackColor = true;
+            this.radioButtonSC.CheckedChanged += new System.EventHandler(this.radioButtonSC_CheckedChanged);
             // 
             // groupBoxTM
             // 
@@ -221,16 +225,15 @@
             this.groupBoxTM.TabStop = false;
             this.groupBoxTM.Text = "Test Mode";
             // 
-            // checkBoxRTWW
+            // checkBoxRWW
             // 
-            this.checkBoxRTWW.AutoSize = true;
-            this.checkBoxRTWW.Location = new System.Drawing.Point(20, 373);
-            this.checkBoxRTWW.Name = "checkBoxRTWW";
-            this.checkBoxRTWW.Size = new System.Drawing.Size(132, 16);
-            this.checkBoxRTWW.TabIndex = 34;
-            this.checkBoxRTWW.Text = "Retest Wrong Words";
-            this.checkBoxRTWW.UseVisualStyleBackColor = true;
-            this.checkBoxRTWW.CheckedChanged += new System.EventHandler(this.checkBoxRTWW_CheckedChanged);
+            this.checkBoxRWW.AutoSize = true;
+            this.checkBoxRWW.Location = new System.Drawing.Point(20, 373);
+            this.checkBoxRWW.Name = "checkBoxRWW";
+            this.checkBoxRWW.Size = new System.Drawing.Size(132, 16);
+            this.checkBoxRWW.TabIndex = 34;
+            this.checkBoxRWW.Text = "Retest Wrong Words";
+            this.checkBoxRWW.UseVisualStyleBackColor = true;
             // 
             // groupBoxTR
             // 
@@ -332,7 +335,7 @@
             this.Controls.Add(this.labelEUN);
             this.Controls.Add(this.textBoxEUN);
             this.Controls.Add(this.groupBoxTR);
-            this.Controls.Add(this.checkBoxRTWW);
+            this.Controls.Add(this.checkBoxRWW);
             this.Controls.Add(this.groupBoxTM);
             this.Controls.Add(this.buttonPause);
             this.Controls.Add(this.buttonStart);
@@ -374,7 +377,7 @@
         private System.Windows.Forms.RadioButton radioButtonSE;
         private System.Windows.Forms.RadioButton radioButtonSC;
         private System.Windows.Forms.GroupBox groupBoxTM;
-        private System.Windows.Forms.CheckBox checkBoxRTWW;
+        private System.Windows.Forms.CheckBox checkBoxRWW;
         private System.Windows.Forms.GroupBox groupBoxTR;
         private System.Windows.Forms.RadioButton radioButtonSU;
         private System.Windows.Forms.RadioButton radioButtonAT;
