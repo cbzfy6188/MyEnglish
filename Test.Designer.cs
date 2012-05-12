@@ -46,9 +46,9 @@
             this.groupBoxTM = new System.Windows.Forms.GroupBox();
             this.checkBoxRTWW = new System.Windows.Forms.CheckBox();
             this.groupBoxTR = new System.Windows.Forms.GroupBox();
-            this.radioButtonAT = new System.Windows.Forms.RadioButton();
-            this.radioButtonSU = new System.Windows.Forms.RadioButton();
             this.radioButtonMU = new System.Windows.Forms.RadioButton();
+            this.radioButtonSU = new System.Windows.Forms.RadioButton();
+            this.radioButtonAT = new System.Windows.Forms.RadioButton();
             this.textBoxEUN = new System.Windows.Forms.TextBox();
             this.labelEUN = new System.Windows.Forms.Label();
             this.groupBoxMP = new System.Windows.Forms.GroupBox();
@@ -134,6 +134,7 @@
             this.buttonSCA.TabIndex = 22;
             this.buttonSCA.Text = "Show Correct Answer";
             this.buttonSCA.UseVisualStyleBackColor = true;
+            this.buttonSCA.Click += new System.EventHandler(this.buttonSCA_Click);
             // 
             // labelCorrectAnswer
             // 
@@ -153,6 +154,7 @@
             this.buttonStop.TabIndex = 25;
             this.buttonStop.Text = "Stop";
             this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
             // buttonStart
             // 
@@ -172,6 +174,7 @@
             this.buttonPause.TabIndex = 27;
             this.buttonPause.Text = "Pause";
             this.buttonPause.UseVisualStyleBackColor = true;
+            this.buttonPause.Click += new System.EventHandler(this.buttonPause_Click);
             // 
             // radioButtonR
             // 
@@ -227,6 +230,7 @@
             this.checkBoxRTWW.TabIndex = 34;
             this.checkBoxRTWW.Text = "Retest Wrong Words";
             this.checkBoxRTWW.UseVisualStyleBackColor = true;
+            this.checkBoxRTWW.CheckedChanged += new System.EventHandler(this.checkBoxRTWW_CheckedChanged);
             // 
             // groupBoxTR
             // 
@@ -240,17 +244,17 @@
             this.groupBoxTR.TabStop = false;
             this.groupBoxTR.Text = "Test Range";
             // 
-            // radioButtonAT
+            // radioButtonMU
             // 
-            this.radioButtonAT.AutoSize = true;
-            this.radioButtonAT.Location = new System.Drawing.Point(8, 21);
-            this.radioButtonAT.Name = "radioButtonAT";
-            this.radioButtonAT.Size = new System.Drawing.Size(47, 16);
-            this.radioButtonAT.TabIndex = 0;
-            this.radioButtonAT.TabStop = true;
-            this.radioButtonAT.Text = "Auto";
-            this.radioButtonAT.UseVisualStyleBackColor = true;
-            this.radioButtonAT.CheckedChanged += new System.EventHandler(this.radioButtonAT_CheckedChanged);
+            this.radioButtonMU.AutoSize = true;
+            this.radioButtonMU.Location = new System.Drawing.Point(8, 67);
+            this.radioButtonMU.Name = "radioButtonMU";
+            this.radioButtonMU.Size = new System.Drawing.Size(89, 16);
+            this.radioButtonMU.TabIndex = 2;
+            this.radioButtonMU.TabStop = true;
+            this.radioButtonMU.Text = "Multi Units";
+            this.radioButtonMU.UseVisualStyleBackColor = true;
+            this.radioButtonMU.CheckedChanged += new System.EventHandler(this.radioButtonMU_CheckedChanged);
             // 
             // radioButtonSU
             // 
@@ -264,17 +268,17 @@
             this.radioButtonSU.UseVisualStyleBackColor = true;
             this.radioButtonSU.CheckedChanged += new System.EventHandler(this.radioButtonSU_CheckedChanged);
             // 
-            // radioButtonMU
+            // radioButtonAT
             // 
-            this.radioButtonMU.AutoSize = true;
-            this.radioButtonMU.Location = new System.Drawing.Point(8, 67);
-            this.radioButtonMU.Name = "radioButtonMU";
-            this.radioButtonMU.Size = new System.Drawing.Size(89, 16);
-            this.radioButtonMU.TabIndex = 2;
-            this.radioButtonMU.TabStop = true;
-            this.radioButtonMU.Text = "Multi Units";
-            this.radioButtonMU.UseVisualStyleBackColor = true;
-            this.radioButtonMU.CheckedChanged += new System.EventHandler(this.radioButtonMU_CheckedChanged);
+            this.radioButtonAT.AutoSize = true;
+            this.radioButtonAT.Location = new System.Drawing.Point(8, 21);
+            this.radioButtonAT.Name = "radioButtonAT";
+            this.radioButtonAT.Size = new System.Drawing.Size(47, 16);
+            this.radioButtonAT.TabIndex = 0;
+            this.radioButtonAT.TabStop = true;
+            this.radioButtonAT.Text = "Auto";
+            this.radioButtonAT.UseVisualStyleBackColor = true;
+            this.radioButtonAT.CheckedChanged += new System.EventHandler(this.radioButtonAT_CheckedChanged);
             // 
             // textBoxEUN
             // 
@@ -283,6 +287,7 @@
             this.textBoxEUN.Name = "textBoxEUN";
             this.textBoxEUN.Size = new System.Drawing.Size(124, 80);
             this.textBoxEUN.TabIndex = 36;
+            this.textBoxEUN.TextChanged += new System.EventHandler(this.textBoxEUN_TextChanged);
             // 
             // labelEUN
             // 
@@ -311,6 +316,7 @@
             // labelPrompt
             // 
             this.labelPrompt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelPrompt.ForeColor = System.Drawing.Color.Red;
             this.labelPrompt.Location = new System.Drawing.Point(180, 365);
             this.labelPrompt.Name = "labelPrompt";
             this.labelPrompt.Size = new System.Drawing.Size(599, 24);

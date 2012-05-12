@@ -58,6 +58,8 @@ namespace MyEnglish
             dataLine += "[ChineseWord2:" + dataStruct.getChineseWord2() + "]";
             dataLine += "[ChineseWord3:" + dataStruct.getChineseWord3() + "]";
             dataLine += "[ChineseWord4:" + dataStruct.getChineseWord4() + "]";
+            dataLine += "[Tested:" + dataStruct.getTested() + "]";
+            dataLine += "[TestResult:" + dataStruct.getTestResult() + "]";
             dataLine += "}";
             dataLine += "\n";
 
@@ -154,7 +156,7 @@ namespace MyEnglish
             for (int i=1; i<tmp_data_word.Length; i++)
             {
                 tmp_data_word_info = tmp_data_word[i].Split('[');
-                for (int j=1; j<tmp_data_word_info.Length; j++)
+                for (int j=1; j<7; j++)
                 {
                     if (tmp_data_word_info[j].StartsWith("Unit:") && tmp_data_word_info[j].EndsWith("]"))
                     {
@@ -197,10 +199,10 @@ namespace MyEnglish
                         restult = restult.Replace("]", "");
                         data[i - 1].setChineseWord3(restult);
                     }
-                    else if (tmp_data_word_info[j].StartsWith("ChineseWord4:") && tmp_data_word_info[j].EndsWith("]}\n"))
+                    else if (tmp_data_word_info[j].StartsWith("ChineseWord4:") && tmp_data_word_info[j].EndsWith("]"))
                     {
                         restult = tmp_data_word_info[j].Replace("ChineseWord4:", "");
-                        restult = restult.Replace("]}\n", "");
+                        restult = restult.Replace("]", "");
                         data[i - 1].setChineseWord4(restult);
                     }
                 }
