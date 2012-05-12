@@ -14,6 +14,7 @@ namespace MyEnglish
         private String ChineseWord3 = "";
         private String ChineseWord4 = "";
         private bool tested = false;
+        private bool testResult = false;
 
         public void setUnit(int munit)
         {
@@ -83,6 +84,16 @@ namespace MyEnglish
         public bool getTested()
         {
             return tested;
+        }
+
+        public void setTestResult(bool mtestResult)
+        {
+            testResult = mtestResult;
+        }
+
+        public bool getTestResult()
+        {
+            return testResult;
         }
     }
 }
