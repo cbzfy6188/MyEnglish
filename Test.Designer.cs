@@ -36,7 +36,7 @@
             this.labelTestResult = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
             this.buttonSCA = new System.Windows.Forms.Button();
-            this.labelCorrectAnswer = new System.Windows.Forms.Label();
+            this.labelCorrectAnswer2 = new System.Windows.Forms.Label();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonStart = new System.Windows.Forms.Button();
             this.buttonPause = new System.Windows.Forms.Button();
@@ -53,6 +53,9 @@
             this.labelEUN = new System.Windows.Forms.Label();
             this.groupBoxMP = new System.Windows.Forms.GroupBox();
             this.labelPrompt = new System.Windows.Forms.Label();
+            this.labelCorrectAnswer1 = new System.Windows.Forms.Label();
+            this.labelCorrectAnswer3 = new System.Windows.Forms.Label();
+            this.labelCorrectAnswer4 = new System.Windows.Forms.Label();
             this.groupBoxTM.SuspendLayout();
             this.groupBoxTR.SuspendLayout();
             this.groupBoxMP.SuspendLayout();
@@ -76,7 +79,6 @@
             this.labelShowWordTitle.Name = "labelShowWordTitle";
             this.labelShowWordTitle.Size = new System.Drawing.Size(160, 31);
             this.labelShowWordTitle.TabIndex = 15;
-            this.labelShowWordTitle.Text = "English Word:";
             // 
             // labelEditWordTitle
             // 
@@ -86,7 +88,6 @@
             this.labelEditWordTitle.Name = "labelEditWordTitle";
             this.labelEditWordTitle.Size = new System.Drawing.Size(160, 31);
             this.labelEditWordTitle.TabIndex = 16;
-            this.labelEditWordTitle.Text = "Chinese Word:";
             // 
             // labelShowWord
             // 
@@ -116,7 +117,6 @@
             this.labelTestResult.Name = "labelTestResult";
             this.labelTestResult.Size = new System.Drawing.Size(100, 31);
             this.labelTestResult.TabIndex = 19;
-            this.labelTestResult.Text = "Wrong!!!";
             // 
             // labelInfo
             // 
@@ -138,15 +138,14 @@
             this.buttonSCA.UseVisualStyleBackColor = true;
             this.buttonSCA.Click += new System.EventHandler(this.buttonSCA_Click);
             // 
-            // labelCorrectAnswer
+            // labelCorrectAnswer2
             // 
-            this.labelCorrectAnswer.AutoSize = true;
-            this.labelCorrectAnswer.ForeColor = System.Drawing.Color.Red;
-            this.labelCorrectAnswer.Location = new System.Drawing.Point(451, 55);
-            this.labelCorrectAnswer.Name = "labelCorrectAnswer";
-            this.labelCorrectAnswer.Size = new System.Drawing.Size(89, 12);
-            this.labelCorrectAnswer.TabIndex = 24;
-            this.labelCorrectAnswer.Text = "Correct answer";
+            this.labelCorrectAnswer2.AutoSize = true;
+            this.labelCorrectAnswer2.ForeColor = System.Drawing.Color.Red;
+            this.labelCorrectAnswer2.Location = new System.Drawing.Point(451, 55);
+            this.labelCorrectAnswer2.Name = "labelCorrectAnswer2";
+            this.labelCorrectAnswer2.Size = new System.Drawing.Size(0, 12);
+            this.labelCorrectAnswer2.TabIndex = 24;
             // 
             // buttonStop
             // 
@@ -235,6 +234,7 @@
             this.checkBoxRWW.TabIndex = 34;
             this.checkBoxRWW.Text = "Retest Wrong Words";
             this.checkBoxRWW.UseVisualStyleBackColor = true;
+            this.checkBoxRWW.CheckedChanged += new System.EventHandler(this.checkBoxRWW_CheckedChanged);
             // 
             // groupBoxTR
             // 
@@ -304,10 +304,13 @@
             // 
             // groupBoxMP
             // 
+            this.groupBoxMP.Controls.Add(this.labelCorrectAnswer4);
+            this.groupBoxMP.Controls.Add(this.labelCorrectAnswer3);
+            this.groupBoxMP.Controls.Add(this.labelCorrectAnswer1);
             this.groupBoxMP.Controls.Add(this.labelShowWordTitle);
             this.groupBoxMP.Controls.Add(this.labelEditWordTitle);
             this.groupBoxMP.Controls.Add(this.labelShowWord);
-            this.groupBoxMP.Controls.Add(this.labelCorrectAnswer);
+            this.groupBoxMP.Controls.Add(this.labelCorrectAnswer2);
             this.groupBoxMP.Controls.Add(this.labelTestResult);
             this.groupBoxMP.Controls.Add(this.textEditWord);
             this.groupBoxMP.Location = new System.Drawing.Point(180, 80);
@@ -325,6 +328,33 @@
             this.labelPrompt.Name = "labelPrompt";
             this.labelPrompt.Size = new System.Drawing.Size(599, 24);
             this.labelPrompt.TabIndex = 39;
+            // 
+            // labelCorrectAnswer1
+            // 
+            this.labelCorrectAnswer1.AutoSize = true;
+            this.labelCorrectAnswer1.ForeColor = System.Drawing.Color.Red;
+            this.labelCorrectAnswer1.Location = new System.Drawing.Point(451, 28);
+            this.labelCorrectAnswer1.Name = "labelCorrectAnswer1";
+            this.labelCorrectAnswer1.Size = new System.Drawing.Size(0, 12);
+            this.labelCorrectAnswer1.TabIndex = 25;
+            // 
+            // labelCorrectAnswer3
+            // 
+            this.labelCorrectAnswer3.AutoSize = true;
+            this.labelCorrectAnswer3.ForeColor = System.Drawing.Color.Red;
+            this.labelCorrectAnswer3.Location = new System.Drawing.Point(451, 83);
+            this.labelCorrectAnswer3.Name = "labelCorrectAnswer3";
+            this.labelCorrectAnswer3.Size = new System.Drawing.Size(0, 12);
+            this.labelCorrectAnswer3.TabIndex = 26;
+            // 
+            // labelCorrectAnswer4
+            // 
+            this.labelCorrectAnswer4.AutoSize = true;
+            this.labelCorrectAnswer4.ForeColor = System.Drawing.Color.Red;
+            this.labelCorrectAnswer4.Location = new System.Drawing.Point(451, 110);
+            this.labelCorrectAnswer4.Name = "labelCorrectAnswer4";
+            this.labelCorrectAnswer4.Size = new System.Drawing.Size(0, 12);
+            this.labelCorrectAnswer4.TabIndex = 27;
             // 
             // Test
             // 
@@ -370,7 +400,7 @@
         private System.Windows.Forms.Label labelTestResult;
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.Button buttonSCA;
-        private System.Windows.Forms.Label labelCorrectAnswer;
+        private System.Windows.Forms.Label labelCorrectAnswer2;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Button buttonPause;
@@ -387,5 +417,8 @@
         private System.Windows.Forms.Label labelEUN;
         private System.Windows.Forms.GroupBox groupBoxMP;
         private System.Windows.Forms.Label labelPrompt;
+        private System.Windows.Forms.Label labelCorrectAnswer4;
+        private System.Windows.Forms.Label labelCorrectAnswer3;
+        private System.Windows.Forms.Label labelCorrectAnswer1;
     }
 }

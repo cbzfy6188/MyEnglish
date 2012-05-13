@@ -23,6 +23,9 @@ namespace MyEnglish
         private int testMode = 0;      //Random:0,Show English:1,Show Chinese:2
         private int testMode_tmp = 0; //Show English:0,Show Chinese:1
         private bool retestWrongWords = true;
+        private bool showResultUser = false;
+        private String system_status = "Stop";
+        private int num_initWords = 0;
 
         public Test(Main main)
         {
@@ -48,7 +51,9 @@ namespace MyEnglish
         private void buttonStart_Click(object sender, EventArgs e)
         {
             labelPrompt.Text = "starting test.";
-            getWordsToTesting();/*
+            getWordsToTesting();
+            num_initWords = dataStruct.Count;
+            /*
             for(int i=0;i<dataStruct.Count;i++)
             {
                 for (int j = 0; j < 8;j++ )
@@ -101,12 +106,13 @@ namespace MyEnglish
             textBoxEUN.Enabled = false;
             groupBoxMP.Enabled = true;
             buttonHome.Enabled = false;
+            system_status = "Start";
             labelPrompt.Text = "Start Testing.";
         }
 
         private void buttonPause_Click(object sender, EventArgs e)
         {
-
+            system_status = "Pause";
             labelPrompt.Text = "Pause Testing.";
         }
 
@@ -117,7 +123,9 @@ namespace MyEnglish
 
         private void buttonSCA_Click(object sender, EventArgs e)
         {
-
+            labelPrompt.Text = "Show correct answers.";
+            showResultUser = true;
+            showCorrectAnswers(true);
         }
 
         private void radioButtonAT_CheckedChanged(object sender, EventArgs e)
@@ -217,7 +225,47 @@ namespace MyEnglish
 
         private void checkBoxRWW_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBoxRWW.Checked == true)
+            if (system_status == "Start")
+            {
+                for (int i = 0; i < dataStruct.Count;i++ )
+                {
+                    if (checkBoxRWW.Checked == true)
+                    {
+                        if (dataStruct[i].getTested() == true)
+                        {
+                            if (dataStruct[i].getTestResult() == false)
+                            {
+                                randomIndex.Add(dataStruct.Count);
+                                dataStruct.Add(dataStruct[i]);
+                                dataStruct[dataStruct.Count-1].setTested(true);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (dataStruct[i].getTested() == true)
+                        {
+                            if (dataStruct[i].getTestResult() == false)
+                            {
+                                if (i >= num_initWords)
+                                {
+                                    if (index_testing >= i)
+                                    {
+                                        labelPrompt.Text = "Disable 'retest wrong words' mode.";
+                                        retestWrongWords = false;
+                                        stopTesting();
+                                        return;
+                                    }
+                                    dataStruct.RemoveAt(i);
+                                    randomIndex.Remove(i);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (checkBoxRWW.Checked == true)
             {
                 labelPrompt.Text = "Enable 'retest wrong words' mode.";
                 retestWrongWords = true;
@@ -240,6 +288,26 @@ namespace MyEnglish
             {
                 dataStruct[randomIndex[index_testing]].setTested(true);
                 dataStruct[randomIndex[index_testing]].setTestResult(true);
+                if (showResultUser == false)
+                {
+                    labelPrompt.Text = "You are right.";
+                    labelTestResult.Text = "Right!!!";
+                    labelTestResult.ForeColor = Color.Green;
+                    showCorrectAnswers(false);
+                }
+                else
+                {
+                    labelTestResult.Text = "Wrong!!!";
+                    labelTestResult.ForeColor = Color.Red;
+                    dataStruct[randomIndex[index_testing]].setTestResult(false);
+                    showResultUser = false;
+                    if (retestWrongWords == true)
+                    {
+                        randomIndex.Add(dataStruct.Count);
+                        dataStruct.Add(dataStruct[randomIndex[index_testing]]);
+                        dataStruct[dataStruct.Count-1].setTested(true);
+                    }
+                }
                 if (textEditWord.Text != "")
                 {
                     index_testing++;
@@ -256,6 +324,9 @@ namespace MyEnglish
             }
             else
             {
+                labelPrompt.Text = "You are wrong.";
+                labelTestResult.Text = "Wrong!!!";
+                labelTestResult.ForeColor = Color.Red;
                 dataStruct[randomIndex[index_testing]].setTestResult(false);
             }
 
@@ -557,6 +628,14 @@ namespace MyEnglish
             randomIndex.Clear();
             index_testing = 0;
 
+            labelTestResult.Text = "";
+            labelShowWordTitle.Text = "";
+            labelEditWordTitle.Text = "";
+            labelCorrectAnswer1.Text = "";
+            labelCorrectAnswer2.Text = "";
+            labelCorrectAnswer3.Text = "";
+            labelCorrectAnswer4.Text = "";
+            labelShowWord.Text = "Please Ready";
             buttonStart.Enabled = true;
             buttonPause.Enabled = false;
             buttonStop.Enabled = false;
@@ -569,7 +648,64 @@ namespace MyEnglish
                 textBoxEUN.Enabled = true;
             }
             labelPrompt.Text = "Stop Testing.";
-            
+            system_status = "Stop";
+        }
+
+        private void showCorrectAnswers(bool user)
+        {
+            int tmp_index_a = 0;
+            labelCorrectAnswer1.Text = "";
+            labelCorrectAnswer2.Text = "";
+            labelCorrectAnswer3.Text = "";
+            labelCorrectAnswer4.Text = "";
+            if (testMode_tmp == 0)
+            {
+                for(int i=0;i<4;i++)
+                {
+                    if(returnAnswer()[i] != "")
+                    {
+                        switch (tmp_index_a)
+                        {
+                            case 0:
+                                labelCorrectAnswer2.Text = returnAnswer()[i];
+                                tmp_index_a++;
+                                break;
+                            case 1:
+                                labelCorrectAnswer3.Text = returnAnswer()[i];
+                                tmp_index_a++;
+                                break;
+                            case 2:
+                                labelCorrectAnswer1.Text = returnAnswer()[i];
+                                tmp_index_a++;
+                                break;
+                            case 3:
+                                labelCorrectAnswer4.Text = returnAnswer()[i];
+                                tmp_index_a++;
+                                break;
+                        }
+                    }
+                }
+            }
+            else 
+            {
+                labelCorrectAnswer2.Text = returnAnswer()[0];
+            }
+
+            if (user == true)
+            {
+                labelCorrectAnswer1.ForeColor = Color.Red;
+                labelCorrectAnswer2.ForeColor = Color.Red;
+                labelCorrectAnswer3.ForeColor = Color.Red;
+                labelCorrectAnswer4.ForeColor = Color.Red;
+                textEditWord.Text = labelCorrectAnswer2.Text;
+            }
+            else
+            {
+                labelCorrectAnswer1.ForeColor = Color.Green;
+                labelCorrectAnswer2.ForeColor = Color.Green;
+                labelCorrectAnswer3.ForeColor = Color.Green;
+                labelCorrectAnswer4.ForeColor = Color.Green;
+            }
         }
     }
 }
