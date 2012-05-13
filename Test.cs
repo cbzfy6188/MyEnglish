@@ -42,6 +42,7 @@ namespace MyEnglish
             radioButtonR.Checked = true;
             checkBoxRWW.Checked = true;
             retestWrongWords = true;
+            groupBoxMP.Enabled = false;
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -71,9 +72,24 @@ namespace MyEnglish
                 }
             }*/
             Random random_index = new Random();
-            for(int i=0;i<dataStruct.Count;i++);
+            int tmp_index1 = 0;
+            int tmp_index2 = 0;
+            int tmp_data1 = 0;
+            int tmp_data2 = 0;
+            for (int i = 0; i < dataStruct.Count;i++ )
             {
-                randomIndex.Add(random_index.Next(dataStruct.Count));
+                randomIndex.Add(i);
+            }
+            for(int i=0;i<dataStruct.Count;i++)
+            {
+                tmp_index2 = random_index.Next(dataStruct.Count);
+                tmp_data1 = randomIndex[tmp_index1];
+                tmp_data2 = randomIndex[tmp_index2];
+                randomIndex.Remove(tmp_data1);
+                randomIndex.Insert(tmp_index2, tmp_data1);
+                randomIndex.Remove(tmp_data2);
+                randomIndex.Insert(tmp_index1, tmp_data2);
+                tmp_index1 = tmp_index2;
             }
             showTestingWord();
 
@@ -83,6 +99,8 @@ namespace MyEnglish
             buttonSCA.Enabled = true;
             groupBoxTR.Enabled = false;
             textBoxEUN.Enabled = false;
+            groupBoxMP.Enabled = true;
+            buttonHome.Enabled = false;
             labelPrompt.Text = "Start Testing.";
         }
 
@@ -94,17 +112,7 @@ namespace MyEnglish
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
-
-            buttonStart.Enabled = true;
-            buttonPause.Enabled = false;
-            buttonStop.Enabled = false;
-            buttonSCA.Enabled = false;
-            groupBoxTR.Enabled = true;
-            if ((radioButtonSU.Checked == true) || (radioButtonMU.Checked == true))
-            {
-                textBoxEUN.Enabled = true;
-            }
-            labelPrompt.Text = "Stop Testing.";
+            stopTesting();
         }
 
         private void buttonSCA_Click(object sender, EventArgs e)
@@ -223,22 +231,34 @@ namespace MyEnglish
 
         private void textEditWord_TextChanged(object sender, EventArgs e)
         {
+            if (textEditWord.Text == "")
+            {
+                return;
+            }
             if ((textEditWord.Text == returnAnswer()[0]) || (textEditWord.Text == returnAnswer()[1])
                 || (textEditWord.Text == returnAnswer()[2]) || (textEditWord.Text == returnAnswer()[3]))
             {
                 dataStruct[randomIndex[index_testing]].setTested(true);
                 dataStruct[randomIndex[index_testing]].setTestResult(true);
-                index_testing++;
-                if (index_testing == dataStruct.Count)
+                if (textEditWord.Text != "")
                 {
-                    return;
+                    index_testing++;
                 }
-                showTestingWord();
+                if (index_testing < dataStruct.Count)
+                {
+                    showTestingWord();
+                }
+                else
+                {
+                    stopTesting();
+                }
+                textEditWord.Text = "";
             }
             else
             {
                 dataStruct[randomIndex[index_testing]].setTestResult(false);
             }
+
         }
 
         private void buttonHome_Click(object sender, EventArgs e)
@@ -447,7 +467,7 @@ namespace MyEnglish
             {
                 case 0:
                     Random random_mode = new Random();
-                    if (random_mode.Next(2) == 0)
+                    if (random_mode.Next(0,100)%2 == 0)
                     {
                         labelPrompt.Text = "Please enter a Chinese word.";
                         labelShowWordTitle.Text = "English Word:";
@@ -528,6 +548,28 @@ namespace MyEnglish
                 answer[0] = dataStruct[randomIndex[index_testing]].getEnglishWord();
             }
             return answer;
+        }
+
+        private void stopTesting()
+        {
+            testRange.Clear();
+            dataStruct.Clear();
+            randomIndex.Clear();
+            index_testing = 0;
+
+            buttonStart.Enabled = true;
+            buttonPause.Enabled = false;
+            buttonStop.Enabled = false;
+            buttonSCA.Enabled = false;
+            groupBoxTR.Enabled = true;
+            groupBoxMP.Enabled = false;
+            buttonHome.Enabled = true;
+            if ((radioButtonSU.Checked == true) || (radioButtonMU.Checked == true))
+            {
+                textBoxEUN.Enabled = true;
+            }
+            labelPrompt.Text = "Stop Testing.";
+            
         }
     }
 }

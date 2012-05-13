@@ -94,9 +94,9 @@
             this.labelShowWord.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelShowWord.Location = new System.Drawing.Point(228, 48);
             this.labelShowWord.Name = "labelShowWord";
-            this.labelShowWord.Size = new System.Drawing.Size(64, 20);
+            this.labelShowWord.Size = new System.Drawing.Size(141, 20);
             this.labelShowWord.TabIndex = 17;
-            this.labelShowWord.Text = "Hello";
+            this.labelShowWord.Text = "Please Ready";
             // 
             // textEditWord
             // 
@@ -111,6 +111,7 @@
             // 
             this.labelTestResult.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelTestResult.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelTestResult.ForeColor = System.Drawing.Color.Red;
             this.labelTestResult.Location = new System.Drawing.Point(453, 171);
             this.labelTestResult.Name = "labelTestResult";
             this.labelTestResult.Size = new System.Drawing.Size(100, 31);
