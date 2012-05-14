@@ -52,10 +52,10 @@
             this.textBoxEUN = new System.Windows.Forms.TextBox();
             this.labelEUN = new System.Windows.Forms.Label();
             this.groupBoxMP = new System.Windows.Forms.GroupBox();
-            this.labelPrompt = new System.Windows.Forms.Label();
-            this.labelCorrectAnswer1 = new System.Windows.Forms.Label();
-            this.labelCorrectAnswer3 = new System.Windows.Forms.Label();
             this.labelCorrectAnswer4 = new System.Windows.Forms.Label();
+            this.labelCorrectAnswer3 = new System.Windows.Forms.Label();
+            this.labelCorrectAnswer1 = new System.Windows.Forms.Label();
+            this.labelPrompt = new System.Windows.Forms.Label();
             this.groupBoxTM.SuspendLayout();
             this.groupBoxTR.SuspendLayout();
             this.groupBoxMP.SuspendLayout();
@@ -122,9 +122,9 @@
             // 
             this.labelInfo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelInfo.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelInfo.Location = new System.Drawing.Point(809, 13);
+            this.labelInfo.Location = new System.Drawing.Point(800, 13);
             this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(131, 282);
+            this.labelInfo.Size = new System.Drawing.Size(154, 282);
             this.labelInfo.TabIndex = 20;
             this.labelInfo.Text = "Information:";
             // 
@@ -320,23 +320,14 @@
             this.groupBoxMP.TabStop = false;
             this.groupBoxMP.Text = "Main Panel";
             // 
-            // labelPrompt
+            // labelCorrectAnswer4
             // 
-            this.labelPrompt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelPrompt.ForeColor = System.Drawing.Color.Red;
-            this.labelPrompt.Location = new System.Drawing.Point(180, 365);
-            this.labelPrompt.Name = "labelPrompt";
-            this.labelPrompt.Size = new System.Drawing.Size(599, 24);
-            this.labelPrompt.TabIndex = 39;
-            // 
-            // labelCorrectAnswer1
-            // 
-            this.labelCorrectAnswer1.AutoSize = true;
-            this.labelCorrectAnswer1.ForeColor = System.Drawing.Color.Red;
-            this.labelCorrectAnswer1.Location = new System.Drawing.Point(451, 28);
-            this.labelCorrectAnswer1.Name = "labelCorrectAnswer1";
-            this.labelCorrectAnswer1.Size = new System.Drawing.Size(0, 12);
-            this.labelCorrectAnswer1.TabIndex = 25;
+            this.labelCorrectAnswer4.AutoSize = true;
+            this.labelCorrectAnswer4.ForeColor = System.Drawing.Color.Red;
+            this.labelCorrectAnswer4.Location = new System.Drawing.Point(451, 110);
+            this.labelCorrectAnswer4.Name = "labelCorrectAnswer4";
+            this.labelCorrectAnswer4.Size = new System.Drawing.Size(0, 12);
+            this.labelCorrectAnswer4.TabIndex = 27;
             // 
             // labelCorrectAnswer3
             // 
@@ -347,14 +338,23 @@
             this.labelCorrectAnswer3.Size = new System.Drawing.Size(0, 12);
             this.labelCorrectAnswer3.TabIndex = 26;
             // 
-            // labelCorrectAnswer4
+            // labelCorrectAnswer1
             // 
-            this.labelCorrectAnswer4.AutoSize = true;
-            this.labelCorrectAnswer4.ForeColor = System.Drawing.Color.Red;
-            this.labelCorrectAnswer4.Location = new System.Drawing.Point(451, 110);
-            this.labelCorrectAnswer4.Name = "labelCorrectAnswer4";
-            this.labelCorrectAnswer4.Size = new System.Drawing.Size(0, 12);
-            this.labelCorrectAnswer4.TabIndex = 27;
+            this.labelCorrectAnswer1.AutoSize = true;
+            this.labelCorrectAnswer1.ForeColor = System.Drawing.Color.Red;
+            this.labelCorrectAnswer1.Location = new System.Drawing.Point(451, 28);
+            this.labelCorrectAnswer1.Name = "labelCorrectAnswer1";
+            this.labelCorrectAnswer1.Size = new System.Drawing.Size(0, 12);
+            this.labelCorrectAnswer1.TabIndex = 25;
+            // 
+            // labelPrompt
+            // 
+            this.labelPrompt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelPrompt.ForeColor = System.Drawing.Color.Red;
+            this.labelPrompt.Location = new System.Drawing.Point(180, 365);
+            this.labelPrompt.Name = "labelPrompt";
+            this.labelPrompt.Size = new System.Drawing.Size(599, 24);
+            this.labelPrompt.TabIndex = 39;
             // 
             // Test
             // 

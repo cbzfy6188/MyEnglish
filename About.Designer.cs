@@ -30,6 +30,7 @@
         {
             this.buttonHome = new System.Windows.Forms.Button();
             this.labelHelp = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonHome
@@ -51,11 +52,22 @@
             this.labelHelp.Size = new System.Drawing.Size(380, 348);
             this.labelHelp.TabIndex = 16;
             // 
+            // labelVersion
+            // 
+            this.labelVersion.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelVersion.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelVersion.Location = new System.Drawing.Point(857, 41);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(83, 23);
+            this.labelVersion.TabIndex = 17;
+            this.labelVersion.Text = "V1.0.0";
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 423);
+            this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.labelHelp);
             this.Controls.Add(this.buttonHome);
             this.MaximizeBox = false;
@@ -71,5 +83,6 @@
 
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Label labelHelp;
+        private System.Windows.Forms.Label labelVersion;
     }
 }

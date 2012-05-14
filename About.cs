@@ -22,6 +22,7 @@ namespace MyEnglish
             mabout += "This software developed by Jacob Cao. It is used for himself and his wife Josephine Zhu learning English.\n";
             mabout += "If you have any question, please send email to me(cbzfy6188@gmail.com).";
             labelHelp.Text = mabout;
+            labelVersion.Text = "V1.0.0";
         }
 
         private void buttonHome_Click(object sender, EventArgs e)

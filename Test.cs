@@ -26,6 +26,7 @@ namespace MyEnglish
         private bool showResultUser = false;
         private String system_status = "Stop";
         private int num_initWords = 0;
+        private Info info = new Info();
 
         public Test(Main main)
         {
@@ -46,6 +47,7 @@ namespace MyEnglish
             checkBoxRWW.Checked = true;
             retestWrongWords = true;
             groupBoxMP.Enabled = false;
+            showInfo(info);
         }
 
         private void buttonStart_Click(object sender, EventArgs e)
@@ -53,29 +55,10 @@ namespace MyEnglish
             labelPrompt.Text = "starting test.";
             getWordsToTesting();
             num_initWords = dataStruct.Count;
-            /*
-            for(int i=0;i<dataStruct.Count;i++)
-            {
-                for (int j = 0; j < 8;j++ )
-                {
-                    if (j == 0)
-                        MessageBox.Show(dataStruct[i].getUnit().ToString());
-                    if (j == 1)
-                        MessageBox.Show(dataStruct[i].getEnglishWord().ToString());
-                    if (j == 2)
-                        MessageBox.Show(dataStruct[i].getChineseWord1().ToString());
-                    if (j == 3)
-                        MessageBox.Show(dataStruct[i].getChineseWord2().ToString());
-                    if (j == 4)
-                        MessageBox.Show(dataStruct[i].getChineseWord3().ToString());
-                    if (j == 5)
-                        MessageBox.Show(dataStruct[i].getChineseWord4().ToString());
-                    if (j == 6)
-                        MessageBox.Show(dataStruct[i].getTested().ToString());
-                    if (j == 7)
-                        MessageBox.Show(dataStruct[i].getTestResult().ToString());
-                }
-            }*/
+            info.totalWords = num_initWords;
+            info.untestedWords = num_initWords;
+            showInfo(info);
+
             Random random_index = new Random();
             int tmp_index1 = 0;
             int tmp_index2 = 0;
@@ -294,6 +277,9 @@ namespace MyEnglish
                     labelTestResult.Text = "Right!!!";
                     labelTestResult.ForeColor = Color.Green;
                     showCorrectAnswers(false);
+                    info.untestedWords--;
+                    info.rightWords++;
+                    showInfo(info);
                 }
                 else
                 {
@@ -307,6 +293,9 @@ namespace MyEnglish
                         dataStruct.Add(dataStruct[randomIndex[index_testing]]);
                         dataStruct[dataStruct.Count-1].setTested(true);
                     }
+                    info.untestedWords--;
+                    info.wrongWords++;
+                    showInfo(info);
                 }
                 if (textEditWord.Text != "")
                 {
@@ -706,6 +695,33 @@ namespace MyEnglish
                 labelCorrectAnswer3.ForeColor = Color.Green;
                 labelCorrectAnswer4.ForeColor = Color.Green;
             }
+        }
+
+        private void showInfo(Info minfo)
+        {
+            String info_str = "Infomation:\n";
+            if (minfo.untestedWords < 0)
+            {
+                minfo.untestedWords = 0;
+                return;
+            }
+            if (minfo.rightWords + minfo.wrongWords > minfo.totalWords)
+            {
+                return;
+            }
+            info_str += "Total Words:" + minfo.totalWords + "\n";
+            info_str += "Untested Words:" + minfo.untestedWords + "\n";
+            info_str += "Right Words:" + minfo.rightWords + "\n";
+            info_str += "Wrong Words:" + minfo.wrongWords + "\n";
+            labelInfo.Text = info_str;
+        }
+
+        private class Info
+        {
+            public int totalWords = 0;
+            public int untestedWords = 0;
+            public int rightWords = 0;
+            public int wrongWords = 0;
         }
     }
 }
