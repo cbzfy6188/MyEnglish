@@ -31,6 +31,8 @@
             this.buttonHome = new System.Windows.Forms.Button();
             this.labelHelp = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonHome
@@ -62,11 +64,22 @@
             this.labelVersion.TabIndex = 17;
             this.labelVersion.Text = "V1.0.0";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 41);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(217, 212);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(966, 423);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelVersion);
             this.Controls.Add(this.labelHelp);
             this.Controls.Add(this.buttonHome);
@@ -75,6 +88,7 @@
             this.Name = "About";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "About";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -84,5 +98,6 @@
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Label labelHelp;
         private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

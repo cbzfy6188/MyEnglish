@@ -60,6 +60,8 @@ namespace MyEnglish
             dataLine += "[ChineseWord4:" + dataStruct.getChineseWord4() + "]";
             dataLine += "[Tested:" + dataStruct.getTested() + "]";
             dataLine += "[TestResult:" + dataStruct.getTestResult() + "]";
+            dataLine += "[Undefine1:" + dataStruct.getUndefine1() + "]";
+            dataLine += "[Undefine2:" + dataStruct.getUndefine2() + "]";
             dataLine += "}";
             dataLine += "\n";
 

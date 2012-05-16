@@ -485,10 +485,10 @@ namespace MyEnglish
                         restult = restult.Replace("]", "");
                         tmp_data.setTested(bool.Parse(restult));
                     }
-                    else if (tmp_data_word_info[j].StartsWith("TestResult:") && tmp_data_word_info[j].EndsWith("]}\n"))
+                    else if (tmp_data_word_info[j].StartsWith("TestResult:") && tmp_data_word_info[j].EndsWith("]"))
                     {
                         restult = tmp_data_word_info[j].Replace("TestResult:", "");
-                        restult = restult.Replace("]}\n", "");
+                        restult = restult.Replace("]", "");
                         tmp_data.setTestResult(bool.Parse(restult));
                     }
                 }

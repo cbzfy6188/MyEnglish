@@ -15,6 +15,8 @@ namespace MyEnglish
         private String ChineseWord4 = "";
         private bool tested = false;
         private bool testResult = false;
+        private String undefine1 = "";
+        private String undefine2 = "";
 
         public void setUnit(int munit)
         {
@@ -94,6 +96,26 @@ namespace MyEnglish
         public bool getTestResult()
         {
             return testResult;
+        }
+
+        public void setUndefine1(String mundefine1)
+        {
+            undefine1 = mundefine1;
+        }
+
+        public String getUndefine1()
+        {
+            return undefine1;
+        }
+
+        public void setUndefine2(String mundefine2)
+        {
+            undefine2 = mundefine2;
+        }
+
+        public String getUndefine2()
+        {
+            return undefine2;
         }
     }
 }
